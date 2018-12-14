@@ -1,0 +1,1 @@
+include ':app', ':decoder', ':libmpg', ':libmpg'

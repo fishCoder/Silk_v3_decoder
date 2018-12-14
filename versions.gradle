@@ -1,0 +1,28 @@
+def build_versions = [:]
+build_versions.min_sdk = 19
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
+ext.build_versions = build_versions
+
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven { url "https://jitpack.io" }
+}
+ext.addRepos = this.&addRepos
+
+
+def deps = [:]
+
+deps.appcompat = 'androidx.appcompat:appcompat:1.0.0-alpha1'
+deps.constraintlayout = 'androidx.constraintlayout:constraintlayout:1.1.2'
+deps.junit = 'junit:junit:4.12'
+deps.espresso = 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+deps.runner = 'androidx.test:runner:1.1.0-alpha3'
+deps.recyclerview = 'androidx.recyclerview:recyclerview:1.0.0-alpha1'
+
+deps.soundlibs = "com.googlecode.soundlibs:mp3spi:1.9.5.4"
+
+ext.deps = deps
