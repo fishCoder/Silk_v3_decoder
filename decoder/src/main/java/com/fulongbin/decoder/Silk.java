@@ -39,12 +39,19 @@ public class Silk {
         return true;
     }
 
-    public static String createPcmFileName(String src){
+    private static String createPcmFileName(String src){
         int index = src.lastIndexOf('/');
         String originName = src.substring(index,src.length());
         String temp = cacheDir+originName+".pcm";
         Log.e(TAG,"pmc temp "+temp);
         return temp;
+    }
+
+    private static void deleteTempFile(String url){
+        File pcm = new File(url);
+        if(pcm.exists()){
+            pcm.delete();
+        }
     }
 
     public static boolean convertMp3ToSilk(String src, String dest){
@@ -57,7 +64,9 @@ public class Silk {
         }
 
         String temp = createPcmFileName(src);
-        return mp3ToSilk(src,dest,temp)==0;
+        boolean result = mp3ToSilk(src,dest,temp)==0;
+        deleteTempFile(temp);
+        return result;
     }
     public static boolean convertSilkToMp3(String src, String dest){
         if(TextUtils.isEmpty(src)||TextUtils.isEmpty(dest)){
@@ -68,8 +77,9 @@ public class Silk {
             return false;
         }
         String temp = createPcmFileName(src);
-
-        return silkToMp3(src,dest,temp)==0;
+        boolean result = silkToMp3(src,dest,temp)==0;
+        deleteTempFile(temp);
+        return result;
     }
 
     public static native int mp3ToSilk(String src, String dest, String temp);
