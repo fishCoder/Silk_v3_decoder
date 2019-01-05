@@ -52,7 +52,7 @@ int convertPCM2Silk(const char *src, const FILE *dest)
     /* default settings */
     SKP_int32 API_fs_Hz = 24000;
     SKP_int32 max_internal_fs_Hz = 0;
-    SKP_int32 targetRate_bps = 25000;
+    SKP_int32 targetRate_bps = 24000;
     SKP_int32 smplsSinceLastPacket, packetSize_ms = 20;
     SKP_int32 frameSizeReadFromFile_ms = 20;
     SKP_int32 packetLoss_perc = 0;
@@ -61,7 +61,7 @@ int convertPCM2Silk(const char *src, const FILE *dest)
 #else
     SKP_int32 complexity_mode = 2;
 #endif
-    SKP_int32 DTX_enabled = 0, INBandFEC_enabled = 0, quiet = 0, tencent = 0;
+    SKP_int32 DTX_enabled = 0, INBandFEC_enabled = 0, quiet = 0, tencent = 1;
     SKP_SILK_SDK_EncControlStruct encControl; // Struct for input to encoder
     SKP_SILK_SDK_EncControlStruct encStatus;  // Struct for status of encoder
 
@@ -218,7 +218,7 @@ int convertPCM2Silk(const char *src, const FILE *dest)
     nBytes = -1;
 
     /* Write payload size */
-    if( tencent ) {
+    if( !tencent ) {
         fwrite( &nBytes, sizeof( SKP_int16 ), 1, bitOutFile );
     }
 

@@ -15,7 +15,7 @@ mp3->pcm->silk
 ### dependencies
 
 ```
-implementation 'com.fulongbin.silk_v3_decoder:decoder:0.9.1'
+implementation 'com.fulongbin.silk_v3_decoder:decoder:0.9.7'
 
 ```
 
