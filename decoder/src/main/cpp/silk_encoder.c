@@ -218,7 +218,7 @@ int convertPCM2Silk(const char *src, const FILE *dest)
     nBytes = -1;
 
     /* Write payload size */
-    if( !tencent ) {
+    if( tencent ) {
         fwrite( &nBytes, sizeof( SKP_int16 ), 1, bitOutFile );
     }
 
