@@ -29,6 +29,17 @@
             android:layout_height="50dp" />
 
         <Button
+            android:id="@+id/btn_silk_to_wav"
+            android:text="silk to wav"
+            android:layout_width="120dp"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/btn_wav_to_silk"
+            android:text="wav to silk"
+            android:layout_width="120dp"
+            android:layout_height="50dp" />
+
+        <Button
             android:id="@+id/btn_clear_cache"
             android:text="clear cache"
             android:layout_width="120dp"

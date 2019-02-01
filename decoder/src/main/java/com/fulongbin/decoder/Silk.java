@@ -82,6 +82,37 @@ public class Silk {
         return result;
     }
 
+    public static boolean convertWavToSilk(String src, String dest){
+        if(TextUtils.isEmpty(src)||TextUtils.isEmpty(dest)){
+            Log.e(TAG,"src or dest is empty");
+            return false;
+        }
+        if (!checkCacheDir()) {
+            return false;
+        }
+
+        String temp = createPcmFileName(src);
+        boolean result = wavToSilk(src,dest,temp)==0;
+        deleteTempFile(temp);
+        return result;
+    }
+    public static boolean convertSilkToWav(String src, String dest){
+        if(TextUtils.isEmpty(src)||TextUtils.isEmpty(dest)){
+            Log.e(TAG,"src or dest is empty");
+            return false;
+        }
+        if (!checkCacheDir()) {
+            return false;
+        }
+        String temp = createPcmFileName(src);
+        boolean result = silkToWav(src,dest,temp)==0;
+        deleteTempFile(temp);
+        return result;
+    }
+
     public static native int mp3ToSilk(String src, String dest, String temp);
     public static native int silkToMp3(String src, String dest, String temp);
+
+    public static native int wavToSilk(String src, String dest, String temp);
+    public static native int silkToWav(String src, String dest, String temp);
 }
