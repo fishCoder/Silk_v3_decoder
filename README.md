@@ -15,7 +15,7 @@ mp3->pcm->silk
 ### dependencies
 
 ```
-implementation 'com.fulongbin.silk_v3_decoder:decoder:0.9.8'
+implementation 'com.fulongbin.silk_v3_decoder:decoder:0.9.10'
 
 ```
 
@@ -23,8 +23,8 @@ implementation 'com.fulongbin.silk_v3_decoder:decoder:0.9.8'
 
 ```
 
- Silk.convertSilkToMp3(silkSrc,mp3Dst);
+ Silk.convertSilkToMp3(silkSrc,mp3Dst,rate);
  
- Silk.convertMp3ToSilk(mp3Src,silkDst);
+ Silk.convertMp3ToSilk(mp3Src,silkDst,rate);
  
 ```
