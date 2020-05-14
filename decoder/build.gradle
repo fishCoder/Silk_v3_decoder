@@ -23,7 +23,6 @@ android {
                 cFlags "-DSTDC_HEADERS -DHAVE_CONFIG_H -DFPM_DEFAULT"
             }
             ndk {
-                abiFilters 'armeabi-v7a','arm64-v8a'
             }
 
         }

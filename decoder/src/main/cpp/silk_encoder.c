@@ -32,7 +32,7 @@ void swap_endian(
 
 
 
-int convertPCM2Silk(const char *src, const FILE *dest)
+int convertPCM2Silk(const char *src, const FILE *dest, const int rate)
 {
     unsigned long tottime, starttime;
     double    filetime;
@@ -50,9 +50,9 @@ int convertPCM2Silk(const char *src, const FILE *dest)
 #endif
 
     /* default settings */
-    SKP_int32 API_fs_Hz = 24000;
+    SKP_int32 API_fs_Hz = rate;
     SKP_int32 max_internal_fs_Hz = 0;
-    SKP_int32 targetRate_bps = 24000;
+    SKP_int32 targetRate_bps = rate;
     SKP_int32 smplsSinceLastPacket, packetSize_ms = 20;
     SKP_int32 frameSizeReadFromFile_ms = 20;
     SKP_int32 packetLoss_perc = 0;
@@ -68,7 +68,7 @@ int convertPCM2Silk(const char *src, const FILE *dest)
 
     /* If no max internal is specified, set to minimum of API fs and 24 kHz */
     if( max_internal_fs_Hz == 0 ) {
-        max_internal_fs_Hz = 24000;
+        max_internal_fs_Hz = rate;
         if( API_fs_Hz < max_internal_fs_Hz ) {
             max_internal_fs_Hz = API_fs_Hz;
         }

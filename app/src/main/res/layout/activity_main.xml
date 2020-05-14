@@ -16,6 +16,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:entries="@array/rates"
+            android:layout_width="120dp"
+            android:layout_height="60dp"/>
+
 
         <Button
             android:id="@+id/btn_silk_to_mp3"

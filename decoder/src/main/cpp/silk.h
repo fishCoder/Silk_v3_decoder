@@ -10,8 +10,8 @@
 
 unsigned long GetHighResolutionTime();
 
-int convertSilk2PCM(const char *src, const FILE *dest);
-int convertPCM2Silk(const char *src, const FILE *dest);
+int convertSilk2PCM(const char *src, const FILE *dest, const int rate);
+int convertPCM2Silk(const char *src, const FILE *dest, const int rate);
 
 
 

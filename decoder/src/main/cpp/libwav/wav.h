@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 int convertWAV2PCM(FILE *fwav,FILE *fpcm);
-int convertPCM2WAV(FILE *fpcm,FILE *fwav);
+int convertPCM2WAV(FILE *fpcm,FILE *fwav,int rate);
 
 
 #endif //SILK_V3_DECODER_WAV_H

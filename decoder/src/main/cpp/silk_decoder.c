@@ -52,7 +52,7 @@ unsigned long GetHighResolutionTime() /* O: time in usec*/
 /* Seed for the random number generator, which is used for simulating packet loss */
 static SKP_int32 rand_seed = 1;
 
-int convertSilk2PCM(const char* src, const FILE* destFile) {
+int convertSilk2PCM(const char* src, const FILE* destFile, int rate) {
     unsigned long tottime, starttime;
     double    filetime;
     size_t    counter;
@@ -115,7 +115,7 @@ int convertSilk2PCM(const char* src, const FILE* destFile) {
 
     /* Set the samplingrate that is requested for the output */
     if( API_Fs_Hz == 0 ) {
-        DecControl.API_sampleRate = 24000;
+        DecControl.API_sampleRate = rate;
     } else {
         DecControl.API_sampleRate = API_Fs_Hz;
     }

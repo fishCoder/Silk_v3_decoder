@@ -54,7 +54,7 @@ public class Silk {
         }
     }
 
-    public static boolean convertMp3ToSilk(String src, String dest){
+    public static boolean convertMp3ToSilk(String src, String dest, int rate){
         if(TextUtils.isEmpty(src)||TextUtils.isEmpty(dest)){
             Log.e(TAG,"src or dest is empty");
             return false;
@@ -64,11 +64,11 @@ public class Silk {
         }
 
         String temp = createPcmFileName(src);
-        boolean result = mp3ToSilk(src,dest,temp)==0;
+        boolean result = mp3ToSilk(src,dest,temp, rate)==0;
         deleteTempFile(temp);
         return result;
     }
-    public static boolean convertSilkToMp3(String src, String dest){
+    public static boolean convertSilkToMp3(String src, String dest, int rate){
         if(TextUtils.isEmpty(src)||TextUtils.isEmpty(dest)){
             Log.e(TAG,"src or dest is empty");
             return false;
@@ -77,12 +77,12 @@ public class Silk {
             return false;
         }
         String temp = createPcmFileName(src);
-        boolean result = silkToMp3(src,dest,temp)==0;
+        boolean result = silkToMp3(src,dest,temp, rate)==0;
         deleteTempFile(temp);
         return result;
     }
 
-    public static boolean convertWavToSilk(String src, String dest){
+    public static boolean convertWavToSilk(String src, String dest, int rate){
         if(TextUtils.isEmpty(src)||TextUtils.isEmpty(dest)){
             Log.e(TAG,"src or dest is empty");
             return false;
@@ -92,11 +92,11 @@ public class Silk {
         }
 
         String temp = createPcmFileName(src);
-        boolean result = wavToSilk(src,dest,temp)==0;
+        boolean result = wavToSilk(src,dest,temp, rate)==0;
         deleteTempFile(temp);
         return result;
     }
-    public static boolean convertSilkToWav(String src, String dest){
+    public static boolean convertSilkToWav(String src, String dest, int rate){
         if(TextUtils.isEmpty(src)||TextUtils.isEmpty(dest)){
             Log.e(TAG,"src or dest is empty");
             return false;
@@ -105,14 +105,14 @@ public class Silk {
             return false;
         }
         String temp = createPcmFileName(src);
-        boolean result = silkToWav(src,dest,temp)==0;
+        boolean result = silkToWav(src,dest,temp, rate)==0;
         deleteTempFile(temp);
         return result;
     }
 
-    public static native int mp3ToSilk(String src, String dest, String temp);
-    public static native int silkToMp3(String src, String dest, String temp);
+    public static native int mp3ToSilk(String src, String dest, String temp, int rate);
+    public static native int silkToMp3(String src, String dest, String temp, int rate);
 
-    public static native int wavToSilk(String src, String dest, String temp);
-    public static native int silkToWav(String src, String dest, String temp);
+    public static native int wavToSilk(String src, String dest, String temp, int rate);
+    public static native int silkToWav(String src, String dest, String temp, int rate);
 }

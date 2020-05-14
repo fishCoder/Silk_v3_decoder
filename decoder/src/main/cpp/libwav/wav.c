@@ -77,7 +77,7 @@ char* dummy_get_raw_pcm(FILE *fp_pcm, int *bytes_read)
     return pcm_buf;
 }
 
-void get_wav_header(int raw_sz, wav_header_t *wh)
+void get_wav_header(int raw_sz, wav_header_t *wh, int rate)
 {
     // RIFF chunk
     strcpy(wh->chunk_id, "RIFF");
@@ -88,7 +88,7 @@ void get_wav_header(int raw_sz, wav_header_t *wh)
     wh->sub_chunk1_size = 16;
     wh->audio_format = 1;
     wh->num_channels = 1;
-    wh->sample_rate = 24000;
+    wh->sample_rate = rate;
     wh->bits_per_sample = 16;
     wh->block_align = wh->num_channels * wh->bits_per_sample / 8;
     wh->byte_rate = wh->sample_rate * wh->num_channels * wh->bits_per_sample / 8;
@@ -116,7 +116,7 @@ void dump_wav_header (wav_header_t *wh)
     printf ("=========================================\n");
 }
 
-int convertPCM2WAV(FILE *fpcm,FILE *fwav){
+int convertPCM2WAV(FILE *fpcm,FILE *fwav,int rate){
 
     int raw_sz = 0;
     wav_header_t wheader;
@@ -128,7 +128,7 @@ int convertPCM2WAV(FILE *fpcm,FILE *fwav){
     char *pcm_buf = dummy_get_raw_pcm (fpcm, &raw_sz);
 
     // construct wav header
-    get_wav_header (raw_sz, &wheader);
+    get_wav_header (raw_sz, &wheader, rate);
     dump_wav_header (&wheader);
 
     fwrite(&wheader, 1, sizeof(wheader), fwav);
