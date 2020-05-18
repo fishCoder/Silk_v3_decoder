@@ -27,4 +27,5 @@ dependencies {
     androidTestImplementation deps.espresso
 
     implementation project(':decoder')
+//    implementation 'com.fulongbin.silk_v3_decoder:decoder:0.9.11'
 }
